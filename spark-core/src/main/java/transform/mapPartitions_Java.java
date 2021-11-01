@@ -20,10 +20,8 @@ public class mapPartitions_Java {
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
 
         List<Integer> datas = Arrays.asList(1, 2, 3, 4);
-
-
-
         JavaRDD<Integer> rdd = sc.parallelize(datas,2);
+
         JavaRDD<Integer> javaRDD = rdd.mapPartitions((FlatMapFunction<Iterator<Integer>, Integer>) integerIterator -> {
             System.out.println(">>>>>>>>>>");
 
