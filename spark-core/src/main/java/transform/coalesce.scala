@@ -9,21 +9,11 @@ object coalesce {
     val sc = new SparkContext(sparkConf)
 
       //coalesce:   第一个参数为重分区的数目，第二个为是否进行shuffle，默认为false;
-      // 这个算子只能缩减分区  不能扩大分区
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6, 7, 8), 8);
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6, 7, 8), 2);
     val coaRdd: RDD[Int] = rdd.coalesce(4);
 
-    val value: RDD[Int] = coaRdd.mapPartitionsWithIndex(
-      (index, iter) => {
-        if (0 == index) {
-          //只保留第二个分区的数据
-          iter
-        } else {
-          Nil.iterator
-        }
-      }
-    )
-    value.collect().foreach(println)
+
+    coaRdd.collect().foreach(println)
 
     println("partitions: "+coaRdd.partitions.size)
 
