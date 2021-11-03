@@ -12,7 +12,7 @@ object reduceByKey {
 
         //相同的key的数据 进行value数据的聚合操作
      //scala语言中 一般的聚合操作都是两两聚合 spark的聚合也是
-    val dataRDD1 = sc.makeRDD(List(("a",1),("a",2),("a",3),("b",4)),4)
+    val dataRDD1 = sc.makeRDD(List(("a",1),("b",2),("a",3),("b",4)),4)
     val reduceRdd: RDD[(String, Int)] = dataRDD1.reduceByKey(_ + _)
 
     val reduceRdd2 = dataRDD1.reduceByKey(_+_, 1)
