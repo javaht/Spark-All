@@ -1,4 +1,4 @@
-package transform;
+package RDD;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
