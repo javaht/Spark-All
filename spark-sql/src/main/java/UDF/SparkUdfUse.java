@@ -4,6 +4,7 @@ import UDF.MyUdf;
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.DataTypes;
 
@@ -20,14 +21,18 @@ public class SparkUdfUse {
                 .option("url", "jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
                 .option("dbtable", "all_date").option("user", "root").option("password", "123456").load();
 
+        rowDataset.write().mode(SaveMode.Append);
 
 
-        rowDataset.createTempView("AllDate");
+
+        //rowDataset.write().save("/output");//这个路径是hadoop的路径
+
+ /*       rowDataset.createTempView("AllDate");
 
         spark.udf().register("myudf",new MyUdf(), DataTypes.StringType);
 
-       spark.sql("select myudf(xm) from AllDate");
-
+         spark.sql("select myudf(xm) from AllDate");
+*/
 
         spark.stop();
     }
