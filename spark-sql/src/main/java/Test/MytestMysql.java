@@ -1,10 +1,7 @@
 package Test;
 
 import org.apache.spark.SparkConf;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Encoders;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.*;
 import org.apache.spark.sql.types.DataTypes;
 import org.fusesource.leveldbjni.All;
 
@@ -28,16 +25,16 @@ public class MytestMysql {
             System.out.println(allDateList.get(i).getXm());
         }
 */
-        Dataset<Row> dataset = spark.read().format("jdbc").option("url", "jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
-                .option("dbtable", "(select * from all_date) m").option("user", "root").option("password", "123456").load();
+        Dataset<Row> dataset = spark.read().format("jdbc").option("url", "jdbc:mysql://192.168.20.62:3306/gmall?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
+                .option("dbtable", "(select * from base_dic) m").option("user", "root").option("password", "123456").load();
 
         //.cast(DataTypes.IntegerType)
-        List<Row> rowList = dataset.select(dataset.col("xm"), dataset.col("sfzh")).collectAsList();
+       /* List<Row> rowList = dataset.select(dataset.col("dic_code"), dataset.col("dic_name")).collectAsList();*/
+       dataset.write().mode(SaveMode.Overwrite).save("/output");
 
-
-        for (int i = 0; i < rowList.size(); i++) {
+     /*   for (int i = 0; i < rowList.size(); i++) {
             System.out.println(rowList.get(i));
-        }
+        }*/
         spark.stop();
     }
 }
