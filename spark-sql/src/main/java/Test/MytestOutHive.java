@@ -13,14 +13,15 @@ public class MytestOutHive {
 
         SparkConf sparkConf = new SparkConf().setMaster("local[*]").setAppName("MyHiveTest");
         SparkSession spark = SparkSession.builder().config(sparkConf).enableHiveSupport().getOrCreate();
-        Dataset<Row> dataset = spark.table("gmall.dim_base_province").where("province_name is not null ");
+        Dataset<Row> dataset = spark.table("ods.ods_aa10").where("aaa100 = 'AAC005' ");
 
 
 
 
-         dataset.select(dataset.col("province_name").cast(DataTypes.StringType)).write().format("jdbc")
-                 .option("url", "jdbc:mysql://192.168.20.62:3306/gmall?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
-                 .option("dbtable","provice").option("user", "root").option("password", "123456").mode(SaveMode.Overwrite)
+         dataset.select(dataset.col("aaa103").cast(DataTypes.StringType)).write().format("jdbc")
+                 .option("url", "jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
+                 .option("driver","com.mysql.cj.jdbc.Driver")
+                 .option("dbtable","Myaa10").option("user", "root").option("password", "123456").mode(SaveMode.Overwrite)
                  .save();
 
         spark.stop();
