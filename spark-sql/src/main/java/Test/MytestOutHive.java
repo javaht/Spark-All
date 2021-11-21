@@ -5,7 +5,6 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.types.DataTypes;
 
 public class MytestOutHive {
     public static void main(String[] args) {
@@ -16,13 +15,10 @@ public class MytestOutHive {
         Dataset<Row> dataset = spark.table("ods.ods_aa10").where("aaa100 = 'AAC005' ");
 
 
-
-
-         dataset.select(dataset.col("aaa103").cast(DataTypes.StringType)).write().format("jdbc")
+         dataset.select(dataset.col("aaa103")).write().format("jdbc")
                  .option("url", "jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
                  .option("driver","com.mysql.cj.jdbc.Driver")
-                 .option("dbtable","Myaa10").option("user", "root").option("password", "123456").mode(SaveMode.Overwrite)
-                 .save();
+                 .option("dbtable","Myaa10").option("user", "root").option("password", "123456").mode(SaveMode.Overwrite).save();
 
         spark.stop();
     }
