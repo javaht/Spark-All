@@ -88,7 +88,7 @@ public class Spark_Mysql_test {
 
 
     //key AAA183
-    //code
+    //code 484
     // codeMap = (AAC183_484,三级飞行通信员)
     private static String getKey(String key,String code, HashMap<String, String> codeMap){
 
