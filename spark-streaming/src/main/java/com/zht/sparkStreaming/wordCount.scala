@@ -18,7 +18,7 @@ object wordCount {
     val wordToOne = words.map((_, 1))
     val wordToCount = wordToOne.reduceByKey(_ + _)
 
-    wordToCount.print()
+    //wordToCount.print()
 
       //由于sparkstream采集器是长期执行的任务 所以不能直接关闭
      //ssc.stop()

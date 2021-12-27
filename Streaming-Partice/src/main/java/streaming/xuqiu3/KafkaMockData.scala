@@ -1,3 +1,4 @@
+package streaming.xuqiu3
 
 import java.util.Properties
 
@@ -6,7 +7,7 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, Produce
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
-object MockData {
+object KafkaMockData {
 
   def main(args: Array[String]): Unit = {
     // 创建配置对象
@@ -36,7 +37,7 @@ object MockData {
       var arealist  = ListBuffer[String]("华北","华东","华南")
       var citylist  = ListBuffer[String]("北京","上海","深圳")
 
-      for( i<- 1 to 30){
+      for( i<- 1 to new Random().nextInt(50)){
 
         val  area  = arealist(new Random().nextInt(3))
         val city  =  citylist(new Random().nextInt(3))
