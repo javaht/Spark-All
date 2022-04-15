@@ -9,7 +9,6 @@ object dataFrameTest3 {
   //编程方式定义schema
   def main(args: Array[String]): Unit = {
     var conf: SparkConf = new SparkConf().setAppName("MyTest").setMaster("local[*]")
-
     val spark: SparkSession = SparkSession.builder().config(conf).enableHiveSupport().getOrCreate()
 
     val textrdd: RDD[String] = spark.sparkContext.textFile("hdfs://192.168.2.240:9000//user//hive//warehouse//ods.db//ods_ac01", 1)
