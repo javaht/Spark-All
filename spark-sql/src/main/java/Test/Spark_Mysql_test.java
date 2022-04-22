@@ -17,14 +17,17 @@ public class Spark_Mysql_test {
          * 读取mysql数据到hive 一般需要加上配置 .config("spark.sql.parquet.writeLegacyFormat", true)
          * */
 
-        SparkConf sparkConf = new SparkConf().set("spark.sql.warehouse.dir", "hdfs://192.168.2.240:8020/user/hive/warehouse");
+        SparkConf sparkConf = new SparkConf().set("spark.sql.warehouse.dir", "hdfs://192.168.2.240:8020/user/hive/warehouse/ods.db");
         SparkSession spark = SparkSession.builder().config(sparkConf).appName("sparkMysqlTest").master("local[*]").enableHiveSupport().getOrCreate();
+
 
 /*
 
         Dataset<Row> rowDataset = spark.read().format("jdbc").option("url", "jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
                 .option("user", "root").option("password", "123456").option("dbtable", "all_date").load();
 */
+
+
         Dataset<Row> aa10 = spark.table("ods.ods_aa10");
 
         final HashMap<String, String> codeMap = new HashMap<String, String>();
@@ -73,13 +76,8 @@ public class Spark_Mysql_test {
       /*  rowDataset.select("xm").write().mode(SaveMode.Overwrite).insertInto("default.mytestxm");
         spark.conf().set("spark.sql.legacy.allowCreatingManagedTableUsingNonemptyLocation","true");
 
-
       rowDataset.select("xm").write().format("hive").mode(SaveMode.Overwrite).saveAsTable("default.mytestxm");
       */
-
-
-
-
         spark.stop();
 
 

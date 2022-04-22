@@ -10,18 +10,18 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spark-core</module>
-        <module>spark-streaming</module>
         <module>spark-sql</module>
+        <module>spark-streaming</module>
         <module>spark-core</module>
         <module>Streaming-Partice</module>
     </modules>
     <dependencies>
-       <!-- <dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.21</version>
+            <version>5.1.47</version>
         </dependency>
-        &lt;!&ndash; spark &ndash;&gt;
+        <!-- spark -->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.12</artifactId>
@@ -36,7 +36,7 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-hive_2.11</artifactId>
             <version>2.1.2</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
     <build>
     <plugins>

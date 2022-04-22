@@ -11,7 +11,6 @@ object wordCount_Close {
     val ssc = StreamingContext.getActiveOrCreate("cp", () =>{
       val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
       val ssc = new StreamingContext(sparkConf, Seconds(3))
-      ssc.checkpoint("cp")
       val lines = ssc.socketTextStream("192.168.20.62", 9999)
       val wordToOne = lines.map((_, 1))
 

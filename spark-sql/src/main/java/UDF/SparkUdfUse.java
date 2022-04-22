@@ -25,14 +25,14 @@ public class SparkUdfUse {
 
 
 
-        //rowDataset.write().save("/output");//这个路径是hadoop的路径
+        rowDataset.write().save("/output");//这个路径是hadoop的路径
 
- /*       rowDataset.createTempView("AllDate");
+      rowDataset.createTempView("AllDate");
 
         spark.udf().register("myudf",new MyUdf(), DataTypes.StringType);
 
          spark.sql("select myudf(xm) from AllDate");
-*/
+
 
         spark.stop();
     }

@@ -9,7 +9,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 import scala.collection.mutable
 
 /*
-* 这个是队列  模拟的假数据
+* 这个是队列
 * */
 object wordCount_Kafka {
   def main(args: Array[String]): Unit = {
@@ -19,7 +19,7 @@ object wordCount_Kafka {
 
     val kafkaPara: Map[String, Object] = Map[String, Object](
       ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> "hadoop102:9092,hadoop103:9092,hadoop104:9092",
-      ConsumerConfig.GROUP_ID_CONFIG -> "atguigu",
+      ConsumerConfig.GROUP_ID_CONFIG -> "test",
       "key.deserializer" -> "org.apache.kafka.common.serialization.StringDeserializer",
       "value.deserializer" -> "org.apache.kafka.common.serialization.StringDeserializer"
     )
@@ -28,7 +28,8 @@ object wordCount_Kafka {
     val kafkaDs = KafkaUtils.createDirectStream[String, String](
       ssc,
       LocationStrategies.PreferConsistent,
-      ConsumerStrategies.Subscribe[String, String](Set("atguigu"), kafkaPara))
+      ConsumerStrategies.Subscribe[String, String](Set("test"), kafkaPara)
+    )
        kafkaDs.map(_.value()).print()
 
     ssc.start()
