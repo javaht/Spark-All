@@ -9,13 +9,20 @@ object coalesce {
     val sc = new SparkContext(sparkConf)
 
     //coalesce:   第一个参数为重分区的数目，第二个为是否进行shuffle，默认为false;
-    //当不允许shuffle(第二个参数为flase)的时候 就不能扩大分区
+    //当不允许shuffle(第二个参数为flase)的时候 就不能扩大分区  但是可以缩小分区
     val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6, 7, 8), 4);
-    val coaRdd: RDD[Int] = rdd.coalesce(8, true);
+    val coaRdd: RDD[Int] = rdd.coalesce(2, false);
 
-    coaRdd.collect().foreach(println)
+    coaRdd.mapPartitionsWithIndex(
+      (index,iter)=>{
+        iter.map(
+          x=>(x,index)
+        )
+      }
+    ).foreach(println)
 
-    println("分区数为  : " + coaRdd.partitions.size)
+
+   // println("分区数为  : " + coaRdd.partitions.size)
 
 
 

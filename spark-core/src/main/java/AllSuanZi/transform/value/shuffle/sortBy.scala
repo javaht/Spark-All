@@ -13,12 +13,13 @@ object sortBy {
     val sortRdd: RDD[Int] = rdd.sortBy(
       num => num,
       false,
-      8
+      4
     )
 
-    println("partitions: " + sortRdd.partitions.size)
+
 
     sortRdd.collect().foreach(println)
+    println("partitions: " + sortRdd.partitions.size)
 
     sc.stop()
 

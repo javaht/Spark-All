@@ -1,5 +1,4 @@
-package transform.transform_2Value
-
+package AllSuanZi.transform.twoValue
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -11,7 +10,6 @@ object aggregateByKey {
 
 
     //将数据根据不同的规则进行分区内计算和分区间计算。注意和reduceBykey(分区内和分区间的规则一样)比较
-    //
     val rdd: RDD[(String, Int)] = sc.makeRDD(List(("a", 1), ("a", 2), ("a", 3),("a",4)),2)
 
         //aggregateByKey存在函数柯里化 有两个参数列表

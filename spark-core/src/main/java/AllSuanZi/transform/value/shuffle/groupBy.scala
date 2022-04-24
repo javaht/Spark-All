@@ -17,10 +17,7 @@ object groupBy {
 
     }
 
-    val groupRdd: RDD[(Int, Iterable[Int])] = rdd.groupBy(groupFunction)
-
-
-    groupRdd.collect().foreach(println)
+    rdd.groupBy(groupFunction).collect().foreach(println)
 
 
     sc.stop()

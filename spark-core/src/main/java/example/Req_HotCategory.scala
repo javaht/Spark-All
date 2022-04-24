@@ -106,7 +106,6 @@ object Req_HotCategory {
       }
     }
 
-1
 
     val resultRDD: Array[(String, (Int, Int, Int))] = analysisRDD.sortBy(_._2, false).take(10)
 

@@ -8,7 +8,7 @@ object mapPartitionsWithIndex2 {
     val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("test")
     val sc = new SparkContext(sparkConf)
 
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 4)
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 2)
 
     //输出 每个数据所在的分区
     val mpRdd: RDD[(Int, Int)] = rdd.mapPartitionsWithIndex(

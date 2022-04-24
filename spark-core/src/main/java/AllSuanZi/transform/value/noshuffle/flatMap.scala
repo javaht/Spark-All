@@ -10,11 +10,7 @@ object flatMap {
 
     val rdd: RDD[List[Int]] = sc.makeRDD(List(List(1, 2), List(3, 4), List(5, 6, 7, 8)))
 
-    val flatRdd: RDD[Int] = rdd.flatMap(
-      list => {
-        list
-      }
-    )
+    val flatRdd: RDD[Int] = rdd.flatMap(list => list)
 
 
     //flatmap：就是把整体拆开后再使用  比如计算hello spark   hello java中 hello出现的次数

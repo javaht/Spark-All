@@ -10,8 +10,8 @@ object glom {
     val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("test")
     val sc = new SparkContext(sparkConf)
 
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6), 2)
-    val glomRdd: RDD[Array[Int]] = rdd.glom()
+    val glomRdd: RDD[Array[Int]] = sc.makeRDD(List(1, 2, 3, 4, 5, 6), 3).glom()
+
 
     glomRdd.collect().foreach(
       data => println(data.mkString(","))

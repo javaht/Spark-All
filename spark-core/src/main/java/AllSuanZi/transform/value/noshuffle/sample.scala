@@ -3,7 +3,7 @@ package AllSuanZi.transform.value.noshuffle
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
-object sample {
+  object sample {
   def main(args: Array[String]): Unit = {
     val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("test")
     val sc = new SparkContext(sparkConf)

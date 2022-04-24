@@ -9,7 +9,7 @@ object distinct {
     val sc = new SparkContext(sparkConf)
 
     val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 4, 5), 1)
-    val disRdd: RDD[Int] = rdd.distinct()
+    rdd.distinct().foreach(println)
 
 
     //distinct的实现和下方实现原理相同
@@ -28,7 +28,7 @@ object distinct {
 
 
 
-    disRdd.collect().foreach(println)
+
 
 
     sc.stop()

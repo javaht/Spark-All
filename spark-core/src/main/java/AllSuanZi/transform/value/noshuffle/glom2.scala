@@ -11,16 +11,12 @@ object glom2 {
     val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("test")
     val sc = new SparkContext(sparkConf)
 
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 2)
-
     //这一步负责把List(1,2,3,4) 分成两个分区的数据  一个是包含12的数组  一个是包含34的数组
-    val glomRdd: RDD[Array[Int]] = rdd.glom()
+    val glomRdd: RDD[Array[Int]] = sc.makeRDD(List(1, 2, 3, 4), 2).glom()
 
     //这一步负责取出每个数组中的最大值
     val maxRdd: RDD[Int] = glomRdd.map(
-      array => {
-        array.max
-      }
+      array => array.max
     )
     println(maxRdd.collect().sum)
 

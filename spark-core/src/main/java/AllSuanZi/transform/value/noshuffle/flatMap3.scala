@@ -12,7 +12,6 @@ object flatMap3 {
 
 
     val flatRdd: RDD[Any] = rdd.flatMap(
-      //这个叫模式匹配
       data => {
         data match {
           case list: List[_] => list
