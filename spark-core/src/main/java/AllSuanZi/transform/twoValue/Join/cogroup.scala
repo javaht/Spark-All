@@ -1,4 +1,4 @@
-package transform.transform_2Value
+package AllSuanZi.transform.twoValue.Join
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
@@ -10,8 +10,8 @@ object cogroup {
 
 
     // cogroup = connect + group
-    val dataRDD1 = sc.makeRDD(List(("a",1),("b",2),("c",3)))
-    val dataRDD2 = sc.makeRDD(List(("a",3),("a",2),("c",3)))
+    val dataRDD1 = sc.makeRDD(List(("a", 1), ("b", 2), ("c", 3)))
+    val dataRDD2 = sc.makeRDD(List(("a", 3), ("a", 2), ("c", 3)))
     val coreRdd: RDD[(String, (Iterable[Int], Iterable[Int]))] = dataRDD1.cogroup(dataRDD2)
 
 
@@ -22,8 +22,6 @@ object cogroup {
 */
 
     coreRdd.collect().foreach(println)
-
-
 
 
     sc.stop()

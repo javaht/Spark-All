@@ -1,4 +1,4 @@
-package transform.transform_2Value
+package AllSuanZi.transform.twoValue
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
