@@ -28,6 +28,8 @@ object ComplexNeed {
         (datas(0), (datas(1), datas(2)))
       }
     )
+
+
     //数据汇总为学生ID，姓名，大数据成绩，数学成绩，总分，平均分。
     val joinRdd: RDD[(String, Iterable[(String, String, String)])] = xuehaoMapRdd.join(scoreMapRdd).map(
       line => {
@@ -39,11 +41,19 @@ object ComplexNeed {
       }
     ).groupByKey(1)
 
-   // joinRdd.map().foreach(println)
+    joinRdd.foreach(println)
 
+    val value = joinRdd.map(line => {(line._1, line._2.toList)})
 
-
-
+    value.map(
+      line =>{
+        val xuhao: String = line._1
+        val name: String = line._2(0)._1
+        val bigDateScore: Int = line._2(0)._3.toInt
+        val math: Int = line._2(1)._3.toInt
+        (xuhao,name,bigDateScore,math,bigDateScore+math,(bigDateScore+math)/2)
+      }
+    ).foreach(println)
 
 
 
