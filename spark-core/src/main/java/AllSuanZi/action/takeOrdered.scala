@@ -9,7 +9,7 @@ object takeOrdered {
     val SparkConf = new SparkConf().setMaster("local[*]").setAppName("MyTest")
     val sc = new SparkContext(SparkConf)
 
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 6, 4, 3), 4)
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 6, 4, 3, 1), 2)
 
 
     //返回该 RDD 排序后的前 n 个元素组成的数组

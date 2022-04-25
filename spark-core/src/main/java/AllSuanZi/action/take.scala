@@ -9,7 +9,7 @@ object take {
     val SparkConf = new SparkConf().setMaster("local[*]").setAppName("MyTest")
     val sc = new SparkContext(SparkConf)
 
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 4)
+    val rdd: RDD[Int] = sc.makeRDD(List(5, 2, 3, 4), 4)
 
 
     //返回一个由 RDD 的前 n 个元素组成的数组

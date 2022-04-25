@@ -17,6 +17,7 @@ object reduce {
 
     println(rdd.reduce(_ + _)) //两两聚合
 
+    println(rdd.reduce((x, y) => x + y)) //两两聚合
 
     sc.stop()
 
