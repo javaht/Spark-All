@@ -17,18 +17,18 @@
         <module>spark-tuning</module>
     </modules>
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.47</version>
-        </dependency>
+        </dependency>-->
         <!-- spark -->
    <!--     <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.12</artifactId>
             <version>3.0.0</version>
         </dependency>-->
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>2.1.2</version>
@@ -37,7 +37,7 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-hive_2.11</artifactId>
             <version>2.1.2</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <build>
     <plugins>

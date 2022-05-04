@@ -8,7 +8,8 @@ object PartitionDemo {
   def main( args: Array[String] ): Unit = {
     val sparkConf = new SparkConf().setAppName("PartitionDemo")
       .set("spark.sql.autoBroadcastJoinThreshold", "-1")//为了演示效果，先禁用了广播join
-//      .setMaster("local[*]")
+      .set("spark.sql.shuffle.partitions", "8")
+     .setMaster("local[*]")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
     //查询出三张表 并进行join 插入到最终表中
@@ -24,7 +25,7 @@ object PartitionDemo {
     saleCourse
       .join(courseShoppingCart, Seq("courseid", "dt", "dn"), "right")
       .join(coursePay, Seq("orderid", "dt", "dn"), "left")
-//      .coalesce(6)
+    //  .coalesce(6)
 //      .repartition(6)
       .select("courseid", "coursename", "status", "pointlistid", "majorid", "chapterid", "chaptername", "edusubjectid"
         , "edusubjectname", "teacherid", "teachername", "coursemanager", "money", "orderid", "cart_discount", "sellmoney",

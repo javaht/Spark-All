@@ -8,8 +8,7 @@ object CBOTuning {
 
 
   def main( args: Array[String] ): Unit = {
-    val sparkConf = new SparkConf().setAppName("CBOTuning")
-      .set("spark.sql.cbo.enabled", "true")
+    val sparkConf = new SparkConf().setAppName("CBOTuning").set("spark.sql.cbo.enabled", "true")
 //      .set("spark.sql.cbo.joinReorder.enabled", "true")
 //      .setMaster("local[*]") //TODO 要打包提交集群执行，注释掉
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)

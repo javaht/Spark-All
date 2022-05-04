@@ -13,7 +13,7 @@ object SkewJoinTuning {
     val sparkConf = new SparkConf().setAppName("SkewJoinTuning")
       .set("spark.sql.autoBroadcastJoinThreshold", "-1")
       .set("spark.sql.shuffle.partitions", "36")
-          .setMaster("local[*]")
+      .setMaster("local[*]")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
     scatterBigAndExpansionSmall(sparkSession)
@@ -31,11 +31,9 @@ object SkewJoinTuning {
     import sparkSession.implicits._
     val saleCourse = sparkSession.sql("select *from sparktuning.sale_course")
     val coursePay = sparkSession.sql("select * from sparktuning.course_pay")
-      .withColumnRenamed("discount", "pay_discount")
-      .withColumnRenamed("createtime", "pay_createtime")
+      .withColumnRenamed("discount", "pay_discount").withColumnRenamed("createtime", "pay_createtime")
     val courseShoppingCart = sparkSession.sql("select * from sparktuning.course_shopping_cart")
-      .withColumnRenamed("discount", "cart_discount")
-      .withColumnRenamed("createtime", "cart_createtime")
+      .withColumnRenamed("discount", "cart_discount").withColumnRenamed("createtime", "cart_createtime")
 
     // TODO 1、拆分 倾斜的key
     val commonCourseShoppingCart: Dataset[Row] = courseShoppingCart.filter(item => item.getAs[Long]("courseid") != 101 && item.getAs[Long]("courseid") != 103)
@@ -44,8 +42,8 @@ object SkewJoinTuning {
     //TODO 2、将倾斜的key打散  打散36份
     val newCourseShoppingCart = skewCourseShoppingCart.mapPartitions(( partitions: Iterator[Row] ) => {
       partitions.map(item => {
-        val courseid = item.getAs[Long]("courseid")
-        val randInt = Random.nextInt(36)
+        val courseid: Long = item.getAs[Long]("courseid")
+        val randInt: Int = Random.nextInt(36)
         CourseShoppingCart(courseid, item.getAs[String]("orderid"),
           item.getAs[String]("coursename"), item.getAs[String]("cart_discount"),
           item.getAs[String]("sellmoney"), item.getAs[String]("cart_createtime"),

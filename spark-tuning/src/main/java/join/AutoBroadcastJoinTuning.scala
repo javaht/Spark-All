@@ -9,7 +9,8 @@ object AutoBroadcastJoinTuning {
 
   def main( args: Array[String] ): Unit = {
     val sparkConf = new SparkConf().setAppName("BroadcastJoinTuning")
-//      .set("spark.sql.autoBroadcastJoinThreshold","10m")
+       .set("spark.sql.autoBroadcastJoinThreshold","10m")
+      .set("spark.sql.shuffle.partitions","10")
       .setMaster("local[*]") //TODO 要打包提交集群执行，注释掉
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 

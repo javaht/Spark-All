@@ -13,7 +13,7 @@ object MapFileBufferTuning {
       .set("spark.shuffle.file.buffer", "64")//对比 shuffle write 的stage 耗时
 //      .set("spark.shuffle.spill.batchSize", "20000")// 不可修改
 //      .set("spark.shuffle.spill.initialMemoryThreshold", "104857600")//不可修改
-//      .setMaster("local[1]") //TODO 要打包提交集群执行，注释掉
+     .setMaster("local[1]") //TODO 要打包提交集群执行，注释掉
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
 
@@ -36,6 +36,6 @@ object MapFileBufferTuning {
       .write.mode(SaveMode.Overwrite).saveAsTable("sparktuning.salecourse_detail")
 
 
-//    while (true) {}
+  while (true) {}
   }
 }

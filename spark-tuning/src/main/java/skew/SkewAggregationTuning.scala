@@ -10,7 +10,7 @@ object SkewAggregationTuning {
 
     val sparkConf = new SparkConf().setAppName("SkewAggregationTuning")
       .set("spark.sql.shuffle.partitions", "36")
-//      .setMaster("local[*]")
+      .setMaster("local[*]")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
     sparkSession.udf.register("random_prefix", ( value: Int, num: Int ) => randomPrefixUDF(value, num))

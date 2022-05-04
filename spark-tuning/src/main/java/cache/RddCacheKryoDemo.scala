@@ -1,7 +1,7 @@
 package cache
 
-import sparktuning.bean.CoursePay
-import sparktuning.utils.InitUtil
+import bean.CoursePay
+import utils.InitUtil
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.storage.StorageLevel

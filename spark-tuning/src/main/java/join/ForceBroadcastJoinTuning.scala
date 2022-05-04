@@ -47,19 +47,20 @@ object ForceBroadcastJoinTuning {
     sparkSession.sql("use sparktuning;")
     println("=======================BROADCASTJOIN Hint=============================")
     sparkSession.sql(sqlstr1).explain()
-    println("=======================BROADCAST Hint=============================")
-    sparkSession.sql(sqlstr2).explain()
-    println("=======================MAPJOIN Hint=============================")
-    sparkSession.sql(sqlstr3).explain()
+   // println("=======================BROADCAST Hint=============================")
+   // sparkSession.sql(sqlstr2).explain()
+   // println("=======================MAPJOIN Hint=============================")
+   // sparkSession.sql(sqlstr3).explain()
 
     // TODO API的方式
-    val sc: DataFrame = sparkSession.sql("select * from sale_course").toDF()
+ /*   val sc: DataFrame = sparkSession.sql("select * from sale_course").toDF()
     val csc: DataFrame = sparkSession.sql("select * from course_shopping_cart").toDF()
     println("=======================DF API=============================")
     import org.apache.spark.sql.functions._
     broadcast(sc)
       .join(csc,Seq("courseid"))
       .select("courseid")
-      .explain()
+      .explain()*/
+    while(true){}
   }
 }
