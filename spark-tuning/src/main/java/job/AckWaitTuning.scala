@@ -9,8 +9,8 @@ object AckWaitTuning {
 
   def main( args: Array[String] ): Unit = {
     val sparkConf = new SparkConf().setAppName("AckWaitTuning")
-//      .set("spark.core.connection.ack.wait.timeout", "2s") // 连接超时时间，默认等于spark.network.timeout的值，默认120s
-//          .setMaster("local[*]")
+     //.set("spark.core.connection.ack.wait.timeout", "2s") // 连接超时时间，默认等于spark.network.timeout的值，默认120s
+          .setMaster("local[*]")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
     useOFFHeapMemory(sparkSession)
   }
@@ -21,6 +21,6 @@ object AckWaitTuning {
     result.cache()
     result.foreachPartition(( p: Iterator[CoursePay] ) => p.foreach(item => println(item.orderid)))
 
-//    while (true) {}
+   while (true) {}
   }
 }

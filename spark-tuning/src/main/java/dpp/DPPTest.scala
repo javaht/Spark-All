@@ -9,8 +9,8 @@ object DPPTest {
 
   def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf().setAppName("DPPTest")
-      .set("spark.sql.optimizer.dynamicPartitionPruning.enabled", "true")
-//      .setMaster("local[*]")
+  //    .set("spark.sql.optimizer.dynamicPartitionPruning.enabled", "true")
+     .setMaster("local[*]")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
     val result=sparkSession.sql(
@@ -20,9 +20,9 @@ object DPPTest {
         |inner join sparktuning.test_school b
         |on a.partition=b.partition and b.id<1000
       """.stripMargin)
-//      .explain(mode="extended")
+      .explain(mode="extended")
 
-    result.foreach(item=>println(item.get(1)))
+  //  result.foreach(item=>println(item.get(1)))
   }
 
 

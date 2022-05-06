@@ -9,7 +9,7 @@ object LocalityWaitTuning {
 
 
   def main( args: Array[String] ): Unit = {
-    val sparkConf = new SparkConf().setAppName("LocalityWaitTuning")
+    val sparkConf = new SparkConf().setAppName("LocalityWaitTuning").setMaster("local[*]")
       // 分别打包测试
 //      .set("spark.locality.wait", "1")
 //      .set("spark.locality.wait.process", "1")
@@ -23,9 +23,11 @@ object LocalityWaitTuning {
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
     import sparkSession.implicits._
-    val ds: Dataset[CoursePay] = sparkSession
-      .read.json("/sparkdata/coursepay.log").as[CoursePay]
+    val ds: Dataset[CoursePay] = sparkSession.read.json("/sparkdata/coursepay.log").as[CoursePay]
     ds.cache()
     ds.foreachPartition(( p: Iterator[CoursePay] ) => p.foreach(item => println(item.orderid)))
+    while (true) {
+      Thread.sleep(10000000)
+    }
   }
 }

@@ -10,7 +10,7 @@ object OFFHeapCache {
 
   def main( args: Array[String] ): Unit = {
     val sparkConf = new SparkConf().setAppName("OFFHeapCache")
-//      .setMaster("local[*]")
+       .setMaster("local[*]")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
     useOFFHeapMemory(sparkSession)
   }
@@ -22,6 +22,8 @@ object OFFHeapCache {
     result.persist(StorageLevel.OFF_HEAP)
     result.foreachPartition(( p: Iterator[CoursePay] ) => p.foreach(item => println(item.orderid)))
 
-//    while (true) {}
+   while (true) {
+
+   }
   }
 }
