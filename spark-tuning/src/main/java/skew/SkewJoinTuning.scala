@@ -30,8 +30,8 @@ object SkewJoinTuning {
   def scatterBigAndExpansionSmall( sparkSession: SparkSession ): Unit = {
     import sparkSession.implicits._
     val saleCourse = sparkSession.sql("select *from sparktuning.sale_course")
-    val coursePay = sparkSession.sql("select * from sparktuning.course_pay")
-      .withColumnRenamed("discount", "pay_discount").withColumnRenamed("createtime", "pay_createtime")
+    val coursePay = sparkSession.sql("select * from sparktuning.course_pay").withColumnRenamed("discount", "pay_discount").withColumnRenamed("createtime", "pay_createtime")
+
     val courseShoppingCart = sparkSession.sql("select * from sparktuning.course_shopping_cart")
       .withColumnRenamed("discount", "cart_discount").withColumnRenamed("createtime", "cart_createtime")
 
@@ -69,8 +69,8 @@ object SkewJoinTuning {
       val dt = item.getAs[String]("dt")
       val dn = item.getAs[String]("dn")
       for (i <- 0 until 36) {
-        list.append(SaleCourse(courseid, coursename, status, pointlistid, majorid, chapterid, chaptername, edusubjectid,
-          edusubjectname, teacherid, teachername, coursemanager, money, dt, dn, i + "_" + courseid))
+        list.append(SaleCourse(courseid, coursename, status, pointlistid, majorid, chapterid, chaptername, edusubjectid, edusubjectname, teacherid, teachername,
+          coursemanager, money, dt, dn, i + "_" + courseid))
       }
       list
     })
