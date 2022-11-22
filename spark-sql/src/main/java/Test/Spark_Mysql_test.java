@@ -21,11 +21,9 @@ public class Spark_Mysql_test {
         SparkSession spark = SparkSession.builder().config(sparkConf).appName("sparkMysqlTest").master("local[*]").enableHiveSupport().getOrCreate();
 
 
-/*
 
         Dataset<Row> rowDataset = spark.read().format("jdbc").option("url", "jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
                 .option("user", "root").option("password", "123456").option("dbtable", "all_date").load();
-*/
 
 
         Dataset<Row> aa10 = spark.table("ods.ods_aa10");

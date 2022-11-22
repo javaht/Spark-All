@@ -14,8 +14,10 @@ public class Spark_Hive_test {
         SparkSession spark = SparkSession.builder().config(sparkConf).enableHiveSupport().getOrCreate();
 
 
-        spark.table("dw.dim_area").write().format("jdbc").option("url","jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
-                                           .option("driver","com.mysql.cj.jdbc.Driver").option("user","root").option("password","123456").option("dbtable","begging").save();
+        spark.table("dw.dim_area")
+                .write().format("jdbc")
+                .option("url","jdbc:mysql://127.0.0.1:3306/testByzht?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong")
+                .option("driver","com.mysql.cj.jdbc.Driver").option("user","root").option("password","123456").option("dbtable","begging").save();
 
         spark.stop();
     }
