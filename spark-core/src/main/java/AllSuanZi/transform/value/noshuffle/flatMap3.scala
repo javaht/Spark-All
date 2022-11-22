@@ -14,7 +14,7 @@ object flatMap3 {
     val flatRdd: RDD[Any] = rdd.flatMap(
       data => {
         data match {
-          case list: List[_] => list
+          case test: List[_] => test
           case data => List(data)
         }
       }

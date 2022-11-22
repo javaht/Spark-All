@@ -1,5 +1,4 @@
 package AllSuanZi.transform.twoValue.ByKey
-
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -29,13 +28,13 @@ object aggregateByKey_Test {
     )
 
     //key保持不变  只对v进行转换
-    val resultRdd: RDD[(String, Int)] = newRdd.mapValues {
-      case (num, cnt) => {
-        num / cnt
-      }
-    }
+//    val resultRdd: RDD[(String, Int)] = newRdd.mapValues {
+//      case (num, cnt) => {
+//        num / cnt
+//      }
+//    }
 
-
+    newRdd.collect().foreach(println)
     //    println("这个是分区：  "+resultRdd.partitions.size)
 
 

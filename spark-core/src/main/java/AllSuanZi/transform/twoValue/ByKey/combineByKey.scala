@@ -11,7 +11,6 @@ object combineByKey {
 
 
     //分区内和分区间的计算规则一样  就用foldByKey  相当于是aggregateBykey的特殊情况
-    //
     val rdd: RDD[(String, Int)] = sc.makeRDD(List(("a", 1), ("a", 2), ("b", 3), ("b", 4), ("b", 5), ("a", 6)), 2)
 
 

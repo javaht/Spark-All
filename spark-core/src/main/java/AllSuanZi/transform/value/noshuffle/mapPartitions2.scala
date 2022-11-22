@@ -13,8 +13,8 @@ object mapPartitions2 {
     //取出每个分区的最大值
     val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 2)
     val mapRdd: RDD[Int] = rdd.mapPartitions(
-      iter => (List(iter.max).iterator)
-    )
+        iter => List(iter.max).iterator
+      )
 
     mapRdd.collect().foreach(println)
 

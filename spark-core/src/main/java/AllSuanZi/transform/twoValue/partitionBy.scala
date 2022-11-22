@@ -16,7 +16,7 @@ object partitionBy {
     // 记得和repartitions与coalesce进行对比
     val rdd: RDD[(Int, String)] = sc.makeRDD(Array((1, "111"), (2, "bbb"), (3, "ccc"), (4, "ddd")),2)
 
-            rdd.collect().foreach(println)
+    rdd.collect().foreach(println)
 
    println("========================================================")
    val rdd2: RDD[(Int, String)] = rdd.partitionBy(new HashPartitioner(2))

@@ -16,7 +16,7 @@ object glom2 {
 
     //这一步负责取出每个数组中的最大值
     val maxRdd: RDD[Int] = glomRdd.map(
-      array => array.max
+      data => data.max
     )
     println(maxRdd.collect().sum)
 

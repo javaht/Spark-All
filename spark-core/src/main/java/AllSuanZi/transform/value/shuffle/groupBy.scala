@@ -14,7 +14,6 @@ object groupBy {
     //groupby 将数据源中的每一个数据进行分组判断 根据返回的分组key  相同的key值会放置在一个组中
     def groupFunction(num: Int): Int = {
       num % 2
-
     }
 
     rdd.groupBy(groupFunction).collect().foreach(println)

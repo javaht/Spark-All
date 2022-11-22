@@ -15,10 +15,10 @@ object reduceByKey {
     val dataRDD1 = sc.makeRDD(List(("a", 1), ("b", 2), ("a", 3), ("b", 4)), 4)
     val reduceRdd: RDD[(String, Int)] = dataRDD1.reduceByKey(_ + _)
 
-    val reduceRdd2 = dataRDD1.reduceByKey(_ + _, 1)
-
-    reduceRdd2.collect().foreach(println)
-    println("partitions: " + reduceRdd2.partitions.size)
+//    val reduceRdd2 = dataRDD1.reduceByKey(_ + _, 1)
+//    reduceRdd2.collect().foreach(println)
+    reduceRdd.collect().foreach(println)
+    println("partitions: " + reduceRdd.partitions.size)
 
 
     sc.stop()

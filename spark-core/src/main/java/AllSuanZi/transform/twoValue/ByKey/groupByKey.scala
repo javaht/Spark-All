@@ -13,7 +13,7 @@ object groupByKey {
     //reduceBykey包含分组和聚合的功能
     // reduceByKey可以在 shuffle 前对分区内相同 key 的数据进行预聚合（combine）功能，这样会减少落盘的数据量
 
-    val rdd: RDD[(String, Int)] = sc.makeRDD(List(("a", 1), ("a", 2), ("c", 3), ("d", 4)), 4)
+    val rdd = sc.makeRDD(List(("a", 1), ("b", 2), ("a", 3), ("b", 4)), 4)
     val groupRdd: RDD[(String, Iterable[Int])] = rdd.groupByKey(2)
 
 
