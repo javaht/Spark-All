@@ -43,7 +43,6 @@ public class Spark_Mysql_test {
 
 
         Dataset<UserInfoBean> result = ac01.map(new MapFunction<AC01Bean, UserInfoBean>() {
-            @Override
             public UserInfoBean call(AC01Bean row) throws Exception {
                 UserInfoBean userInfoBean = new UserInfoBean();
 
