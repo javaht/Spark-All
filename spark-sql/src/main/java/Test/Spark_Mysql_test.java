@@ -46,7 +46,6 @@ public class Spark_Mysql_test {
             @Override
             public UserInfoBean call(AC01Bean row) throws Exception {
                 UserInfoBean userInfoBean = new UserInfoBean();
-
                 userInfoBean.setAac005_name(getKey("AAC005", row.getAac005(), codeMap));
                 userInfoBean.setAac008_name(getKey("AAC008", row.getAac008(), codeMap));
                 userInfoBean.setAac009_name(getKey("AAC009", row.getAac009(), codeMap));
@@ -62,7 +61,6 @@ public class Spark_Mysql_test {
                 userInfoBean.setAac014_name(getKey("AAC014", row.getAac014(), codeMap));
                 userInfoBean.setAac015_name(getKey("AAC015", row.getAac015(), codeMap));
                 userInfoBean.setCac220_name(getKey("CAC220", row.getCac220(), codeMap));
-
                 return userInfoBean;
             }
         }, Encoders.bean(UserInfoBean.class));
@@ -71,11 +69,10 @@ public class Spark_Mysql_test {
         result.where("aac028_name ='农民工' ").show();
 
         //这里一般不同saveAsTable   这就百度查查什么原因
-      /*  rowDataset.select("xm").write().mode(SaveMode.Overwrite).insertInto("default.mytestxm");
+        rowDataset.select("xm").write().mode(SaveMode.Overwrite).insertInto("default.mytestxm");
         spark.conf().set("spark.sql.legacy.allowCreatingManagedTableUsingNonemptyLocation","true");
 
       rowDataset.select("xm").write().format("hive").mode(SaveMode.Overwrite).saveAsTable("default.mytestxm");
-      */
         spark.stop();
 
 
