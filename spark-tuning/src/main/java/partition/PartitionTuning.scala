@@ -15,7 +15,7 @@ object PartitionTuning {
     //查询出三张表 并进行join 插入到最终表中
     val saleCourse = sparkSession.sql("select * from sparktuning.sale_course")
     val coursePay = sparkSession.sql("select * from sparktuning.course_pay")
-      .Renamed("discount", "pay_discount")
+      .withColumnRenamed("discount", "pay_discount")
       .withColumnRenamed("createtime", "pay_createtime")
     val courseShoppingCart = sparkSession.sql("select * from sparktuning.course_shopping_cart")
       .drop("coursename")

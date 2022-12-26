@@ -46,8 +46,6 @@ import java.util.Date;
         }
 
         public static Dataset odsProcess(Dataset ds, SparkSession session){
-
-
             // 获取第一行数据
             ds.first();
             Date date = new Date();
