@@ -11,7 +11,7 @@
 
     <artifactId>Streaming-Partice</artifactId>
 <dependencies>
-<!--    <dependency>
+    <dependency>
         <groupId>org.apache.spark</groupId>
         <artifactId>spark-core_2.12</artifactId>
         <version>3.0.0</version>
@@ -31,7 +31,6 @@
         <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
         <version>3.0.0</version>
     </dependency>
-    &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid &ndash;&gt;
     <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>druid</artifactId>
@@ -46,7 +45,7 @@
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
         <version>2.10.1</version>
-    </dependency>-->
+    </dependency>
 </dependencies>
 
 </project>
