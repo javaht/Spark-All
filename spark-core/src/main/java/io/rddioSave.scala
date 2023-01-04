@@ -7,8 +7,6 @@ object rddioSave {
 
   def main(args: Array[String]): Unit = {
 
-
-
     val SparkConf = new SparkConf().setMaster("local[*]").setAppName("MyTest")
     val sc = new SparkContext(SparkConf)
 
@@ -21,8 +19,6 @@ object rddioSave {
     rdd.saveAsTextFile("output1")
     rdd.saveAsObjectFile("output2")
     rdd.saveAsSequenceFile("output3")
-
-
 
     sc.stop()
   }
