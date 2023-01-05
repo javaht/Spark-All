@@ -8,6 +8,8 @@ import org.apache.spark.{SparkConf, SparkContext}
     val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("test")
     val sc = new SparkContext(sparkConf)
 
+
+
     val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 1)
 
 

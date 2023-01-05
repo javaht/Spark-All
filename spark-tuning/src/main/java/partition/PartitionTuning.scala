@@ -8,9 +8,12 @@ object PartitionTuning {
   def main( args: Array[String] ): Unit = {
     val sparkConf = new SparkConf().setAppName("PartitionTuning")
       .set("spark.sql.autoBroadcastJoinThreshold", "-1")//为了演示效果，先禁用了广播join
-//      .setMaster("local[*]")
-      .set("spark.sql.shuffle.partitions", "144")
+      .setMaster("local[*]")
+      .set("spark.sql.shuffle.partitions", "20")
+
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
+
+
 
     //查询出三张表 并进行join 插入到最终表中
     val saleCourse = sparkSession.sql("select * from sparktuning.sale_course")
