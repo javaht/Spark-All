@@ -21,7 +21,6 @@ object SkewJoinTuning {
     //    while(true){}
   }
 
-
   /**
     * 打散大表  扩容小表 解决数据倾斜
     *
@@ -29,11 +28,10 @@ object SkewJoinTuning {
     */
   def scatterBigAndExpansionSmall( sparkSession: SparkSession ): Unit = {
     import sparkSession.implicits._
-    val saleCourse = sparkSession.sql("select *from sparktuning.sale_course")
+    val saleCourse = sparkSession.sql("select * from sparktuning.sale_course")
     val coursePay = sparkSession.sql("select * from sparktuning.course_pay").withColumnRenamed("discount", "pay_discount").withColumnRenamed("createtime", "pay_createtime")
 
-    val courseShoppingCart = sparkSession.sql("select * from sparktuning.course_shopping_cart")
-      .withColumnRenamed("discount", "cart_discount").withColumnRenamed("createtime", "cart_createtime")
+    val courseShoppingCart = sparkSession.sql("select * from sparktuning.course_shopping_cart").withColumnRenamed("discount", "cart_discount").withColumnRenamed("createtime", "cart_createtime")
 
     // TODO 1、拆分 倾斜的key
     val commonCourseShoppingCart: Dataset[Row] = courseShoppingCart.filter(item => item.getAs[Long]("courseid") != 101 && item.getAs[Long]("courseid") != 103)
