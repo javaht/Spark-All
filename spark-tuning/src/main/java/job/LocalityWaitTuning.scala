@@ -16,10 +16,10 @@ object LocalityWaitTuning {
 //      .set("spark.locality.wait.node", "1")
 //      .set("spark.locality.wait.rack", "1")
       // 分别打包测试
-      .set("spark.locality.wait", "6s")
-      .set("spark.locality.wait.process", "60s")
-      .set("spark.locality.wait.node", "30s")
-      .set("spark.locality.wait.rack", "20s")
+//      .set("spark.locality.wait", "6s")
+//      .set("spark.locality.wait.process", "60s")
+//      .set("spark.locality.wait.node", "30s")
+//      .set("spark.locality.wait.rack", "20s")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
     import sparkSession.implicits._
