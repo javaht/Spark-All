@@ -30,7 +30,7 @@ object wordCount_Kafka {
       LocationStrategies.PreferConsistent,
       ConsumerStrategies.Subscribe[String, String](Set("test"), kafkaPara)
     )
-       kafkaDs.map(_.value()).print()
+    kafkaDs.map(_.value()).print()
 
     ssc.start()
     ssc.awaitTermination()
