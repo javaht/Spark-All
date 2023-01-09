@@ -1,4 +1,4 @@
-package Test;
+package Test.readDataSource;
 
 import Test.Bean.AC01Bean;
 import Test.Bean.UserInfoBean;
