@@ -19,6 +19,7 @@ object wordCount_Diy {
     messageDs.print()
 
     ssc.start()
+    // 等待采集器的关闭
     ssc.awaitTermination()
   }
   /*

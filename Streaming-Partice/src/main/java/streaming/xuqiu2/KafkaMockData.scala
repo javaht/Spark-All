@@ -8,7 +8,6 @@ import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
 object KafkaMockData {
-
   def main(args: Array[String]): Unit = {
     // 创建配置对象
     val prop = new Properties()
@@ -27,11 +26,10 @@ object KafkaMockData {
           producer.send(record)
         }
       )
-
-
       Thread.sleep(2000)
 
     }
+
     def mockData()  ={
       val list = ListBuffer[String]()
       var arealist  = ListBuffer[String]("华北","华东","华南")

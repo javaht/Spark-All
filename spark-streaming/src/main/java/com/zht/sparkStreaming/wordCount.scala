@@ -11,14 +11,13 @@ object wordCount {
     val ssc = new StreamingContext(sparkConf, Seconds(4))
 
 
-    val line = ssc.socketTextStream("192.168.20.62", 9999)
+    val line = ssc.socketTextStream("", 9999)
 
     val words = line.flatMap(_.split(" "))
 
     val wordToOne = words.map((_, 1))
     val wordToCount = wordToOne.reduceByKey(_ + _)
-
-    //wordToCount.print()
+    wordToCount.print()
 
       //由于sparkstream采集器是长期执行的任务 所以不能直接关闭
      //ssc.stop()
