@@ -8,7 +8,7 @@ object wordCount_reduceByKeyAndWindow {
   def main(args: Array[String]): Unit = {
 
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
-    val ssc = new StreamingContext(sparkConf, Seconds(3))
+    val ssc = new StreamingContext(sparkConf, Seconds(5))
 
    ssc.checkpoint("cp")
     val lines = ssc.socketTextStream("192.168.20.62",9999)
@@ -19,6 +19,7 @@ object wordCount_reduceByKeyAndWindow {
     //当窗口的范围比较大 但是滑动幅度比较少 可以采用增加数据和删除数据的方式  无需重复计算
 
 /**
+ * https://blog.csdn.net/Romantic_sir/article/details/104751115
  * 窗口操作优化的机制
  * 比如说我们还是每隔五秒查看一下前十五秒数据，我们可以加上新进来的批次，再减去出去的批次，防止任务堆积
  * 用优化机制必须设置checkpoint，不设置会报错
@@ -30,8 +31,8 @@ object wordCount_reduceByKeyAndWindow {
     val windowDs = wordToOne.reduceByKeyAndWindow(
       (x:Int,y:Int) =>{ x+y }, //这个是增加的
       (x:Int,y:Int) =>{ x-y },//这个是减少的
-      Seconds(9), //采集周期 窗口的范围=采集周期的整数倍
-      Seconds(3) //是滑动的周期=采集周期的整数倍
+      Seconds(15), //采集周期 窗口的范围=采集周期的整数倍
+      Seconds(15) //是滑动的周期=采集周期的整数倍
     )
 
 
